@@ -1,0 +1,9 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    cout << "Hello\nWorld\tC++\b!" << endl;
+    cout << setw(10) << "OOPS";
+    return 0;
+}
