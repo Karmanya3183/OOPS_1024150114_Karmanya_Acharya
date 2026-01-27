@@ -1,0 +1,42 @@
+#include <iostream>
+
+// (b) Global variable
+int x = 100;
+
+class Demo {
+public:
+    static int count;      // (c) static variable declaration
+    void show();           // (a) function declaration
+};
+
+// (c) Static variable definition
+int Demo::count = 5;
+
+// (a) Class function defined outside the class
+void Demo::show() {
+    std::cout << "Inside class function defined outside class" << std::endl;
+    std::cout << "Static count = " << Demo::count << std::endl;
+}
+
+int main() {
+    // (b) Local variable with same name
+    int x = 50;
+
+    Demo d;
+
+    // (a) Calling class function
+    d.show();
+
+    // (b) Accessing global variable
+    std::cout << "Local x = " << x << std::endl;
+    std::cout << "Global x = " << ::x << std::endl;
+
+    // (c) Accessing static variable
+    std::cout << "Access static variable using class name: "
+              << Demo::count << std::endl;
+
+    // (d) Using inbuilt library with scope resolution
+    std::cout << "Using std::cout and std::cin example" << std::endl;
+
+    return 0;
+}
