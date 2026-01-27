@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+    float real;
+    float imaginary;
+
+public:
+    // (a) Initialize object values
+    void setComplex(float r, float i) {
+        real = r;
+        imaginary = i;
+    }
+
+    // (b) Display complex number
+    void displayComplex() {
+        cout << real << " + " << imaginary << "i" << endl;
+    }
+
+    // (c) Pass and return objects to calculate sum
+    Complex addComplex(Complex c) {
+        Complex temp;
+        temp.real = real + c.real;
+        temp.imaginary = imaginary + c.imaginary;
+        return temp;
+    }
+};
+
+int main() {
+    Complex c1, c2, c3;
+
+    c1.setComplex(2.5, 3.5);
+    c2.setComplex(1.5, 2.5);
+
+    cout << "First Complex Number: ";
+    c1.displayComplex();
+
+    cout << "Second Complex Number: ";
+    c2.displayComplex();
+
+    c3 = c1.addComplex(c2);   // passing and returning object
+
+    cout << "Sum of Complex Numbers: ";
+    c3.displayComplex();
+
+    return 0;
+}
