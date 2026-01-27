@@ -1,1 +1,75 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Student {
+    // Data Members
+    string name;
+    int rollNo;
+    string degree;
+    string hostel;
+    float cgpa;
+
+    // Member Functions
+    void addDetails() {
+        cout << "Enter Name: ";
+        getline(cin, name);
+
+        cout << "Enter Roll No: ";
+        cin >> rollNo;
+        cin.ignore();
+
+        cout << "Enter Degree: ";
+        getline(cin, degree);
+
+        cout << "Enter Hostel: ";
+        getline(cin, hostel);
+
+        cout << "Enter CGPA: ";
+        cin >> cgpa;
+    }
+
+    void updateDetails() {
+        cin.ignore();
+        cout << "Enter New Name: ";
+        getline(cin, name);
+
+        cout << "Enter New Degree: ";
+        getline(cin, degree);
+    }
+
+    void updateCGPA() {
+        cout << "Enter Updated CGPA: ";
+        cin >> cgpa;
+    }
+
+    void updateHostel() {
+        cin.ignore();
+        cout << "Enter Updated Hostel: ";
+        getline(cin, hostel);
+    }
+
+    void displayDetails() {
+        cout << "\n--- Student Details ---\n";
+        cout << "Name: " << name << endl;
+        cout << "Roll No: " << rollNo << endl;
+        cout << "Degree: " << degree << endl;
+        cout << "Hostel: " << hostel << endl;
+        cout << "CGPA: " << cgpa << endl;
+    }
+};
+
+int main() {
+    Student s;
+
+    s.addDetails();
+    s.displayDetails();
+
+    s.updateCGPA();
+    s.updateHostel();
+
+    s.displayDetails();
+
+    return 0;
+}
 
