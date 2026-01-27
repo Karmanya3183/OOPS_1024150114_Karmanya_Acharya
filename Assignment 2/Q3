@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+private:
+    // Private member function
+    void privateFunction() {
+        cout << "This is a private member function." << endl;
+    }
+
+public:
+    // Public member function
+    void publicFunction() {
+        cout << "Calling private function from public function..." << endl;
+        privateFunction();   // ✅ Allowed
+    }
+};
+
+int main() {
+    Demo obj;
+    obj.publicFunction();   // ✔ Public function call
+    // obj.privateFunction(); // ❌ Not allowed (compile-time error)
+    return 0;
+}
