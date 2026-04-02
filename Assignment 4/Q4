@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Rectangle{
+    public:
+    int l, b;
+    Rectangle(int length=2, int breadth=2){
+        l = length;
+        b = breadth;
+    }
+    int area(){
+        return l*b;
+    }
+    ~Rectangle(){
+        cout<<"In destructor"<<endl;
+    }
+};
+int main() {
+	// your code goes here
+	int* a = new int(5);
+	cout<< *a<<endl;
+	delete a;
+	
+	float* f = new float(2.5);
+	cout<< *f<<endl;
+	delete f;
+	
+	int* arr = new int[2]{1,2};
+	cout<<arr[0]<<" "<<arr[1]<<endl;
+	delete[] arr;
+	
+	Rectangle* r = new Rectangle(4,5);
+	cout<< r->area()<<endl;
+	delete r;
+	return 0;
+}
