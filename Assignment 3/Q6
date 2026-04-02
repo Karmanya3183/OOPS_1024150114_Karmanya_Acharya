@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+class Cube{
+    public:
+    int i;
+    int cube(Cube &c){
+        c.i = c.i*c.i*c.i;
+        return c.i;
+    }
+};
+int main() {
+    // Write C++ code here
+    Cube c;
+    c.i = 3;
+    cout<<"The cube is "<<c.cube(c);
+    return 0;
+}
