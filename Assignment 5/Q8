@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+class LibraryUser {
+protected:
+    string name;
+    int id;
+
+public:
+    void setUser(string n, int i) {
+        name = n;
+        id = i;
+    }
+
+    void displayUser() {
+        cout << "Name: " << name << endl;
+        cout << "ID: " << id << endl;
+    }
+};
+
+class Student : public LibraryUser {
+    int grade;
+
+public:
+    void setStudent(string n, int i, int g) {
+        setUser(n, i);
+        grade = g;
+    }
+
+    void displayStudent() {
+        displayUser();
+        cout << "Grade: " << grade << endl;
+    }
+};
+
+class Teacher : public LibraryUser {
+    string department;
+
+public:
+    void setTeacher(string n, int i, string d) {
+        setUser(n, i);
+        department = d;
+    }
+
+    void displayTeacher() {
+        displayUser();
+        cout << "Department: " << department << endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.setStudent("Arsh", 101, 12);
+    s.displayStudent();
+
+    cout << endl;
+
+    Teacher t;
+    t.setTeacher("Mr. Sharma", 201, "Physics");
+    t.displayTeacher();
+
+    return 0;
+}
