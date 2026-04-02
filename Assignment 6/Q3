@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+class Account {
+    const long account_number;
+    long transaction_id;
+    string transaction_type;
+    double balance;
+
+public:
+    Account(long acc_no, double bal) : account_number(acc_no) {
+        balance = bal;
+        transaction_id = 0;
+        transaction_type = "None";
+    }
+
+    long depositAmount(const long to, const long from, const double amount) {
+        if (to == account_number) {
+            balance += amount;
+            transaction_id++;
+            transaction_type = "Credit";
+        }
+        return transaction_id;
+    }
+
+    long creditAmount(const long to, const long from, const double amount) {
+        if (from == account_number) {
+            balance -= amount;
+            transaction_id++;
+            transaction_type = "Debit";
+        }
+        return transaction_id;
+    }
+
+    void displayDetails() const {
+        cout << "Account Number: " << account_number << endl;
+        cout << "Balance: " << balance << endl;
+        cout << "Last Transaction ID: " << transaction_id << endl;
+        cout << "Last Transaction Type: " << transaction_type << endl;
+        cout << endl;
+    }
+};
+
+int main() {
+    Account a1(101, 1000), a2(102, 1500), a3(103, 2000), a4(104, 2500), a5(105, 3000);
+
+    a1.depositAmount(101, 102, 500);
+    a2.creditAmount(103, 102, 200);
+
+    a3.depositAmount(103, 101, 700);
+    a4.creditAmount(105, 104, 300);
+
+    a5.depositAmount(105, 103, 400);
+
+    a1.displayDetails();
+    a2.displayDetails();
+    a3.displayDetails();
+    a4.displayDetails();
+    a5.displayDetails();
+
+    return 0;
+}
