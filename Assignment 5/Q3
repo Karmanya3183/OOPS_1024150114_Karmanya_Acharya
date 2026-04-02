@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    int pub = 1;
+protected:
+    int pro = 2;
+private:
+    int pri = 3;
+};
+
+class PublicDerived : public Base {
+public:
+    void show() {
+        cout << pub << " " << pro << endl;
+    }
+};
+
+class ProtectedDerived : protected Base {
+public:
+    void show() {
+        cout << pub << " " << pro << endl;
+    }
+};
+
+class PrivateDerived : private Base {
+public:
+    void show() {
+        cout << pub << " " << pro << endl;
+    }
+};
+
+int main() {
+    PublicDerived a;
+    a.show();
+    cout << a.pub << endl;
+
+    ProtectedDerived b;
+    b.show();
+
+    PrivateDerived c;
+    c.show();
+
+    return 0;
+}
