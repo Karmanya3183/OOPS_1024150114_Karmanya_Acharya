@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+class Area{
+    public:
+    int l;
+    int b;
+    void LnB(){
+        cout<<"Length: ";cin>>l;
+        cout<<"Breadth: ";cin>>b;
+    }
+    void area(){
+        int area = l*b;
+        cout<<"Area is: "<<area<<endl;
+    }
+};
+int main() {
+    // Write C++ code here
+    int n;
+    cout<<"Number of rectangles: ";
+    cin>>n;
+    Area r[n];
+    for(int i=0;i<n;i++){
+        r[i].LnB();
+        r[i].area();
+    }
+    return 0;
+}
