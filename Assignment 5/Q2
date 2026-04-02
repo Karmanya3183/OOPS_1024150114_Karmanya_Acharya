@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+class Person {
+protected:
+    string name;
+};
+class Student : public Person {
+public:
+    void setName(string n) {
+        name = n;
+    }
+    void display() {
+        cout << name << endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.setName("Arsh");
+    s.display();
+    return 0;
+}
