@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+class pass{
+    public:
+    int i;
+    void byV(pass c){
+        c.i*=2;
+        cout<<"In class by value: "<<c.i<<endl;
+    }
+    void byR(pass &c){
+        c.i*=2;
+        cout<<"In class by reference: "<<c.i<<endl;
+    }
+};
+int main() {
+    // Write C++ code here
+    pass c;
+    c.i=3;
+    c.byV(c);
+    cout<<"In main by value: "<<c.i<<endl;
+    c.byR(c);
+    cout<<"In main by reference: "<<c.i<<endl;
+    return 0;
+}
