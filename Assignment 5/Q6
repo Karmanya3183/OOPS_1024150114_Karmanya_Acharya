@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+class Book {
+public:
+    string title, author;
+    float price;
+
+    void setBook(string t, string a, float p) {
+        title = t;
+        author = a;
+        price = p;
+    }
+
+    void displayBook() {
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Price: " << price << endl;
+    }
+};
+
+class Textbook : public Book {
+public:
+    string subject;
+
+    void setTextbook(string t, string a, float p, string s) {
+        setBook(t, a, p);
+        subject = s;
+    }
+
+    void displayTextbook() {
+        displayBook();
+        cout << "Subject: " << subject << endl;
+    }
+};
+
+int main() {
+    Book b;
+    b.setBook("General Book", "Author A", 299.5);
+    b.displayBook();
+
+    cout << endl;
+
+    Textbook tb;
+    tb.setTextbook("Math Book", "Author B", 499.9, "Mathematics");
+    tb.displayTextbook();
+
+    return 0;
+}
