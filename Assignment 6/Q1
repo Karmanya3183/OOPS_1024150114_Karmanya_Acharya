@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Book{
+    public:
+    string Title;
+    string Author;
+    string ISBN;
+};
+
+class Library{
+    public:
+    Book b[10];
+    int n=0;
+    bool addNewBook(string& title, string& author, string& isbn){
+        b[n].Title = title;
+        b[n].Author = author;
+        b[n].ISBN = isbn;
+        n++;
+        return true;
+    }
+    bool removeBooks(string& ISBN);
+    
+    void displayDetails(){
+        for(int i=0;i<n;i++){
+            cout<<b[i].Title<<" "<<b[i].Author<<" "<<b[i].ISBN<<endl;
+        }
+    }
+};
+
+bool Library::removeBooks(string &ISBN){
+    for(int i=0;i<n;i++){
+        if(b[i].ISBN==ISBN){
+            b[i] = b[n-1];
+            n--;
+            return true;
+        }
+    }
+    return false;
+}
+int main() {
+	// your code goes here
+	Library l;
+	string t = "OOPS", a = "Arsh", i = "1";
+	string k = "cpp", b = "arsh", j ="2";
+	l.addNewBook(t,a,i);
+	l.addNewBook(k,b,j);
+	l.displayDetails();
+	l.removeBooks(i);
+	l.displayDetails();
+	
+	return 0;
+}
