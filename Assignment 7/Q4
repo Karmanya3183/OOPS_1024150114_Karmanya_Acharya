@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+protected:
+    string name;
+public:
+    Student(const string& n) : name(n) {}
+    virtual void show() = 0;        // pure virtual
+    virtual ~Student() {}
+};
+
+class Engineering : public Student {
+public:
+    Engineering(const string& n) : Student(n) {}
+    void show() override {
+        cout << "Engineering: " << name << endl;
+    }
+};
+
+class Medicine : public Student {
+public:
+    Medicine(const string& n) : Student(n) {}
+    void show() override {
+        cout << "Medicine: " << name << endl;
+    }
+};
+
+class Science : public Student {
+public:
+    Science(const string& n) : Student(n) {}
+    void show() override {
+        cout << "Science: " << name << endl;
+    }
+};
+
+int main() {
+    Student* s[3];
+    s[0] = new Engineering("Rahul");
+    s[1] = new Medicine("Priya");
+    s[2] = new Science("Aditya");
+
+    for (int i = 0; i < 3; i++) {
+        s[i]->show();
+    }
+
+    for (int i = 0; i < 3; i++) {
+        delete s[i];
+    }
+
+    return 0;
+}
