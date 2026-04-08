@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+class Test {
+    float val;
+public:
+    Test(float x = 0.0f) : val(x) {}
+
+    void show() {
+        cout << "Value = " << val << endl;
+    }
+};
+
+int main() {
+    float f = 3.14f;
+    Test t = f;      // float → Test object
+    t.show();
+    return 0;
+}
