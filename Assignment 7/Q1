@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+class Polygon {
+protected:
+    float width, height;
+public:
+    void set_value(float w, float h) {
+        width = w;
+        height = h;
+    }
+};
+
+class Rectangle : public Polygon {
+public:
+    float area() {
+        return width * height;
+    }
+};
+
+class Triangle : public Polygon {
+public:
+    float area() {
+        return 0.5f * width * height;
+    }
+};
+
+int main() {
+    Polygon* p;
+    Rectangle r;
+    Triangle t;
+
+    p = &r;
+    p->set_value(10, 5);
+    cout << "Rectangle area = " << r.area() << endl;   // r has area()
+
+    p = &t;
+    p->set_value(10, 5);
+    cout << "Triangle area = " << t.area() << endl;    // t has area()
+
+    return 0;
+}
