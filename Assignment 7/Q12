@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+class Test {
+    float val;
+public:
+    Test(float x = 0.0f) : val(x) {}
+
+    operator float() {      // conversion operator
+        return val;
+    }
+
+    void show() {
+        cout << "Value = " << val << endl;
+    }
+};
+
+int main() {
+    Test t(5.5f);
+    float f = t;          // Test → float
+    cout << "Float value = " << f << endl;
+    return 0;
+}
