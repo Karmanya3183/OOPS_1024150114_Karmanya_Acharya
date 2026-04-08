@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class STRING {
+    char* str;
+public:
+    STRING(const char* s = "") {
+        str = new char[strlen(s) + 1];
+        strcpy(str, s);
+    }
+
+    ~STRING() {
+        delete[] str;
+    }
+
+    STRING(const STRING& s) {
+        str = new char[strlen(s.str) + 1];
+        strcpy(str, s.str);
+    }
+
+    STRING& operator=(const STRING& s) {
+        if (this != &s) {
+            delete[] str;
+            str = new char[strlen(s.str) + 1];
+            strcpy(str, s.str);
+        }
+        return *this;
+    }
+
+    // equality operator
+    bool operator==(const STRING& s) {
+        return strcmp(str, s.str) == 0;
+    }
+
+    // concatenation operator
+    STRING operator+(const STRING& s) {
+        STRING temp;
+        delete[] temp.str;
+        temp.str = new char[strlen(str) + strlen(s.str) + 1];
+        strcpy(temp.str, str);
+        strcat(temp.str, s.str);
+        return temp;
+    }
+
+    void show() {
+        cout << str << endl;
+    }
+};
+
+int main() {
+    STRING s1("Hello "), s2("World"), s3;
+    s3 = s1 + s2;
+    s3.show();
+
+    if (s1 == s2)
+        cout << "Equal" << endl;
+    else
+        cout << "Not equal" << endl;
+
+    return 0;
+}
