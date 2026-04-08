@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>   // for sqrt()
+using namespace std;
+
+class Triangle {
+public:
+    // right‑angle triangle
+    float area(float base, float height) {
+        return 0.5f * base * height;
+    }
+
+    // equilateral triangle
+    float area(float side) {
+        return (sqrt(3.0f) / 4.0f) * side * side;
+    }
+
+    // isosceles triangle (two equal sides, angle between them)
+    float area(float a, float b, float theta_deg) {
+        float theta_rad = theta_deg * 3.14159f / 180.0f;
+        return 0.5f * a * b * sin(theta_rad);
+    }
+};
+
+int main() {
+    Triangle t;
+
+    cout << "Right‑angle area  = " << t.area(10.0f, 6.0f) << endl;
+    cout << "Equilateral area  = " << t.area(6.0f) << endl;
+    cout << "Isosceles area    = " << t.area(5.0f, 5.0f, 60.0f) << endl;
+
+    return 0;
+}
