@@ -1,0 +1,60 @@
+#ifndef ARRAY_MANAGER_TEMPLATE_H
+#define ARRAY_MANAGER_TEMPLATE_H
+
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class ArrayManager {
+private:
+    T *arr;
+    int size;
+    
+public:
+    ArrayManager(int s) {
+        size = s;
+        arr = new T[size];
+    }
+    
+    ~ArrayManager() {
+        delete[] arr;
+    }
+    
+    void inputElements() {
+        cout << "Enter " << size << " elements: ";
+        for (int i = 0; i < size; i++) {
+            cin >> arr[i];
+        }
+    }
+    
+    void display() {
+        cout << "Array elements: ";
+        for (int i = 0; i < size; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+    
+    T* getArray() { 
+        return arr; 
+    }
+    
+    int getSize() { 
+        return size; 
+    }
+    
+    void setElement(int index, T value) {
+        if (index >= 0 && index < size) {
+            arr[index] = value;
+        }
+    }
+    
+    T getElement(int index) {
+        if (index >= 0 && index < size) {
+            return arr[index];
+        }
+        throw runtime_error("Index out of bounds!");
+    }
+};
+
+#endif
