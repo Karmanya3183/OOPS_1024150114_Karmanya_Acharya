@@ -1,0 +1,53 @@
+#ifndef QUEUE_TEMPLATE_H
+#define QUEUE_TEMPLATE_H
+
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+template <typename T>
+class Queue {
+private:
+    T *arr;
+    int front, rear, capacity;
+    
+public:
+    Queue(int size = 100) {
+        capacity = size;
+        arr = new T[capacity];
+        front = 0;
+        rear = -1;
+    }
+    
+    ~Queue() {
+        delete[] arr;
+    }
+    
+    void enqueue(T value) {
+        if (rear == capacity - 1) {
+            cout << "Queue Overflow!" << endl;
+            return;
+        }
+        arr[++rear] = value;
+    }
+    
+    T dequeue() {
+        if (front > rear) {
+            throw runtime_error("Queue Underflow!");
+        }
+        return arr[front++];
+    }
+    
+    bool isEmpty() {
+        return front > rear;
+    }
+    
+    T peek() {
+        if (front > rear) {
+            throw runtime_error("Queue is empty!");
+        }
+        return arr[front];
+    }
+};
+
+#endif
