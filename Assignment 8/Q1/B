@@ -1,0 +1,15 @@
+#ifndef MIN_TEMPLATE_H
+#define MIN_TEMPLATE_H
+
+template <typename T>
+T findMin(T arr[], int size) {
+    T minVal = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < minVal) {
+            minVal = arr[i];
+        }
+    }
+    return minVal;
+}
+
+#endif
