@@ -1,0 +1,20 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream file("AZ.txt");
+    for(char ch='A'; ch<='Z'; ch++) {
+        file << ch;
+    }
+    file.close();
+
+    ifstream infile("AZ.txt");
+    infile.seekg(9);  // 10th character (index starts from 0)
+    char ch;
+    infile.get(ch);
+
+    cout << "10th character: " << ch;
+    infile.close();
+    return 0;
+}
