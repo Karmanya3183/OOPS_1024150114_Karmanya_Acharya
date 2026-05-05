@@ -1,0 +1,32 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    fstream file("hello.txt", ios::out | ios::in);
+
+    string text = "Hello World";
+
+    // Write and show position
+    for(int i = 0; i < text.length(); i++) {
+        file.put(text[i]);
+        cout << "Position after writing '" << text[i] << "': " << file.tellp() << endl;
+    }
+
+    // Replace "World" with "C++"
+    file.seekp(6);  // position of 'W'
+    file << "C++  "; // extra spaces to overwrite properly
+
+    file.close();
+
+    // Read final content
+    ifstream infile("hello.txt");
+    char ch;
+    cout << "\nUpdated content: ";
+    while(infile.get(ch)) {
+        cout << ch;
+    }
+
+    infile.close();
+    return 0;
+}
